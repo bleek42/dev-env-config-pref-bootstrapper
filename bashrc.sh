@@ -6,6 +6,9 @@ case $- in
 *) return ;;
 esac
 
+
+stty werase '^H'
+xset b off
 # # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 # check the window size after each command and, if necessary,
@@ -33,6 +36,10 @@ HISTTIMEFORMAT='%a %Y-%m-%d %H:%M:%S'
 
 if command -v bat >/dev/null 2>&1; then
   alias cat=bat
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash --cmd cd --hook pwd)"
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
