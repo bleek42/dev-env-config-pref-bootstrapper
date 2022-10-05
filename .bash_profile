@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-[[ -f "$HOME"/.bashrc ]] && source "$HOME"/.bashrc
+test -f "$HOME".profile && source "HOME"/.profile
+test -f "$HOME"/.bashrc && source "$HOME"/.bashrc
 
 if [ -n "$WT_SESSION" ]; then
 	export COLORTERM="truecolor"
