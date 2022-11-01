@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+extArray=(
+	aaron-bond.better-comments
+	agutierrezr.emmet-keybindings
+	apollographql.apollo-midnight-color-theme
+	blake-mealey.generate-wt-scheme
+	brenix.hacker-theme
+	capaj.vscode-standardjs-snippets
+	christian-kohler.npm-intellisense
+	christian-kohler.path-intellisense
+	clintonrost.theme-firefox-devtools
+	codezombiech.gitignore
+	cweijan.vscode-office
+	dbaeumer.vscode-eslint
+	eamodio.gitlens
+	ecmel.vscode-html-css
+	EditorConfig.EditorConfig
+	equinusocio.vsc-material-theme-icons
+	esbenp.prettier-vscode
+	EugeneNor.freezing-moon-theme
+	firefox-devtools.vscode-firefox-debug
+	hasiburr.dark-hacker-theme-by-hasibur-r
+	hediet.vscode-drawio
+	humao.rest-client
+	IBM.output-colorizer
+	joy-yu.css-snippets
+	karigari.chat
+	kevinnorman.kali-terminal-dark
+	kisstkondoros.vscode-codemetrics
+	mikestead.dotenv
+	ms-dotnettools.vscode-dotnet-runtime
+	ms-edgedevtools.vscode-edge-devtools
+	ms-vscode-remote.remote-wsl
+	ms-vscode.remote-repositories
+	ms-vsliveshare.vsliveshare
+	ms-vsliveshare.vsliveshare-audio
+	numso.prettier-standard-vscode
+	pnp.polacode
+	ritwickdey.LiveServer
+	Shan.code-settings-sync
+	skacekachna.win-opacity
+	Stepsize.tech-debt-tracker
+	streetsidesoftware.code-spell-checker
+	Tyriar.windows-terminal
+	usernamehw.errorlens
+	VisualStudioExptTeam.intellicode-api-usage-examples
+	VisualStudioExptTeam.vscodeintellicode
+	VisualStudioExptTeam.vscodeintellicode-completions
+	VisualStudioExptTeam.vscodeintellicode-insiders
+	vscode-icons-team.vscode-icons
+	WallabyJs.quokka-vscode
+	xabikos.JavaScriptSnippets
+	yandeu.five-server
+	Zignd.html-css-class-completion
+)
+
+for ext in "${extArray[@]}" do
+	eval "$(code --install-extensions "$ext")"
+done
