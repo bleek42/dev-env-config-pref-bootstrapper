@@ -1,6 +1,14 @@
 #!/usr/bin/bash
 
-test -f "$HOME".profile && source "HOME"/.profile
+config_dir="$HOME/.config"
+if [ -d "$config_dir/bash" ]; then
+    for script in "$config_dir"/bash/*.sh; do
+        source "$script"
+    done
+fi
+
+
+test -f "$HOME"/.profile && source "$HOME"/.profile
 test -f "$HOME"/.bashrc && source "$HOME"/.bashrc
 
 if [ -n "$WT_SESSION" ]; then
@@ -25,26 +33,3 @@ if [ -n "$WT_SESSION" ]; then
 		fi
 	fi
 fi
-
-# # if test -f "$env"; then
-# function agent_load_env() {
-# 	test -f "$env" && . "$env" >|/dev/null
-# }
-
-# function agent_start() {
-# 	(
-# 		umask 077
-# 		ssh-agent >|"$env"
-# 	) # use -t here for timeout
-# 	. "$env" >|/dev/null
-# }
-
-# # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
-# agent_run_state=$(
-# 	ssh-add -l >|/dev/null 2>&1
-# 	echo $?
-# )
-
-# if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-# 	agent_start
-# fi

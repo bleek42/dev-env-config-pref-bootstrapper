@@ -1,11 +1,29 @@
 #!/bin/bash
 
-config_dir="$HOME/.config"
-if [ -d "$config_dir/bash" ]; then
-	for script in "$config_dir"/bash/*.sh; do
-		source "$script"
-	done
-fi
+# echo "$env"
+
+# agent_load_env () {
+# 	test -f "$env" && . "$env" >| /dev/null
+# }
+
+# agent_start () {
+#     (umask 077; ssh-agent >| "$env")
+#     . "$env" >| /dev/null
+#  }
+
+# agent_load_env
+
+# # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+# agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+# if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+#     agent_start
+#     ssh-add
+# elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+#     ssh-add
+# fi
+
+# unset env
 
 case $- in
 *i*) ;;
@@ -28,7 +46,6 @@ shopt -s histappend
 # make sure this isn't overrided by the OS (Ubuntu does this)
 # make cd ignore case and small typos
 shopt -s cdspell
-
 unset HISTFILESIZE
 unset HISTSIZE
 HISTSIZE=2000
@@ -43,16 +60,3 @@ HISTTIMEFORMAT='%a %Y-%m-%d %H:%M:%S'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/bash lesspipe)"
-
-# # Modify path here:
-# export MASTERPATH=$PATH
-# Editor for git and other commands
-export EDITOR='micro'
-export VISUAL='code-insiders'
-
-# ═══════════════════════════════════════
-# COLORS FOR COMMON COMMANDS
-# ═══════════════════════════════════════
-
-# Give less options to man
-export MANPAGER='less -s -M +Gg'
