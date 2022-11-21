@@ -69,46 +69,46 @@ function getunicodec() {
 }
 
 # prints ANSI 16-colors
-# function ansicolortest() {
-#   T='ABC' # The test text
-#   echo -ne "\n\011\011   40m     41m     42m     43m"
-#   echo -e "     44m     45m     46m     47m"
-#   fff=('    m' '   1m' '  30m' '1;30m' '  31m' '1;31m')
-#   fff2=('  32m' '1;32m' '  33m' '1;33m' '  34m' '1;34m')
-#   fff3=('  35m' '1;35m' '  36m' '1;36m' '  37m' '1;37m')
-#   FGS=("${fff[@]}" "${fff2[@]}" "${fff3[@]}")
-#   for FGs in "${FGS[@]}"; do
-#     FG=${FGs// /}
-#     echo -en " $FGs\011 \033[$FG  $T  "
-#     for BG in 40m 41m 42m 43m 44m 45m 46m 47m; do
-#       echo -en "$EINS \033[$FG\033[$BG  $T \033[0m\033[$BG \033[0m"
-#     done
-#     echo ""
-#   done
-#   echo ""
-# }
+function ansicolortest() {
+  T='ABC' # The test text
+  echo -ne "\n\011\011   40m     41m     42m     43m"
+  echo -e "     44m     45m     46m     47m"
+  fff=('    m' '   1m' '  30m' '1;30m' '  31m' '1;31m')
+  fff2=('  32m' '1;32m' '  33m' '1;33m' '  34m' '1;34m')
+  fff3=('  35m' '1;35m' '  36m' '1;36m' '  37m' '1;37m')
+  FGS=("${fff[@]}" "${fff2[@]}" "${fff3[@]}")
+  for FGs in "${FGS[@]}"; do
+    FG=${FGs// /}
+    echo -en " $FGs\011 \033[$FG  $T  "
+    for BG in 40m 41m 42m 43m 44m 45m 46m 47m; do
+      echo -en "$EINS \033[$FG\033[$BG  $T \033[0m\033[$BG \033[0m"
+    done
+    echo ""
+  done
+  echo ""
+}
 
 # # prints xterm 256 colors
-# function 256colortest() {
-#   echo -en "\n   +  "
-#   for i in {0..35}; do
-#     printf "%2b " $i
-#   done
-#   printf "\n\n %3b  " 0
-#   for i in {0..15}; do
-#     echo -en "\033[48;5;${i}m  \033[m "
-#   done
-#   #for i in 16 52 88 124 160 196 232; do
-#   for i in {0..6}; do
-#     let "i = i*36 +16"
-#     printf "\n\n %3b  " $i
-#     for j in {0..35}; do
-#       let "val = i+j"
-#       echo -en "\033[48;5;${val}m  \033[m "
-#     done
-#   done
-#   echo -e "\n"
-# }
+function 256colortest() {
+  echo -en "\n   +  "
+  for i in {0..35}; do
+    printf "%2b " $i
+  done
+  printf "\n\n %3b  " 0
+  for i in {0..15}; do
+    echo -en "\033[48;5;${i}m  \033[m "
+  done
+  #for i in 16 52 88 124 160 196 232; do
+  for i in {0..6}; do
+    let "i = i*36 +16"
+    printf "\n\n %3b  " $i
+    for j in {0..35}; do
+      let "val = i+j"
+      echo -en "\033[48;5;${val}m  \033[m "
+    done
+  done
+  echo -e "\n"
+}
 
 # check top ten commands executed
 topten() {
@@ -231,19 +231,19 @@ function bat_p() {
 
 # Get projected battery life time remaining
 function bat_t() {
-	c=$(\cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null)
-	i=$(\cat /sys/class/power_supply/BAT0/current_now 2>/dev/null)
-	s=$(\cat /sys/class/power_supply/BAT0/status)
+	c="$(\cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null)"
+	i="$(\cat /sys/class/power_supply/BAT0/current_now 2>/dev/null)"
+	s="$(\cat /sys/class/power_supply/BAT0/status)"
 	if [[ "$s" == "Full" ]]; then
 		echo '🔌'
 	else
-		echo "$(bc -l <<<"$c/$i")" | cut -c1-5
+		"$(bc -l <<<"$c/$i")" | cut -c1-5
 	fi
 }
 
 # Get the current battery status: discharging, charging, or full
 function bat_s() {
-	s=$(\cat /sys/class/power_supply/BAT0/status)
+	s="$(\cat /sys/class/power_supply/BAT0/status)"
 	if [[ "$s" == "Discharging" ]]; then
 		echo -e "${ECHOR2}▾"
 	elif [[ "$s" == "Charging" ]]; then
@@ -307,33 +307,27 @@ function timer_stop() {
 # ═══════════════════════════════════════
 # PRE-COMMAND EXECUTION HOOK
 # ═══════════════════════════════════════
-# function preexec() {
-# 	# Character for showing commands executed this cycle
-# 	ac='↣'
-# 	# Before anything, print out a color code to make output default color
-# 	echo -ne "\e[0m"
-# 	# Concatenate expanded function calls into $this variable
-# 	# So we can display it in PS1
-# 	if [[ -z "$this" ]] && [[ "$BASH_COMMAND" != 'setprompt' ]] &&
-# 		[[ "$BASH_COMMAND" != 'PROMPT_COMMAND=setprompt' ]]; then
-# 		this=$BASH_COMMAND
-# 		this="$(echo "$this" | sed 's/this=//g')"
-# 	elif [[ "$BASH_COMMAND" != 'setprompt' ]] &&
-# 		[[ "$BASH_COMMAND" != 'PROMPT_COMMAND=setprompt' ]]; then
-# 		this+=" ${ac} "$BASH_COMMAND
-# 		this="$(echo "$this" | sed 's/this+=" ${ac} "//g')"
-# 	fi
-# 	# Increment our counter for the number of simple commands executed
-# 	# in this prompt cycle
-# 	NUM_CALLS=$((NUM_CALLS + 1))
-# 	# Begin a timer
-# 	timer_start
-# }
+function preexec() {
+	# Character for showing commands executed this cycle
+	ac='↣'
+	# Before anything, print out a color code to make output default color
+	echo -ne "\e[0m"
+	# Concatenate expanded function calls into $this variable
+	# So we can display it in PS1
+	if [[ -z "$this" ]] && [[ "$BASH_COMMAND" != 'setprompt' ]] &&
+		[[ "$BASH_COMMAND" != 'PROMPT_COMMAND=setprompt' ]]; then
+		this=$BASH_COMMAND
+		this="$(echo "$this" | sed 's/this=//g')"
+	elif [[ "$BASH_COMMAND" != 'setprompt' ]] &&
+		[[ "$BASH_COMMAND" != 'PROMPT_COMMAND=setprompt' ]]; then
+		this+=" ${ac} "$BASH_COMMAND
+		this="$(echo "$this" | sed 's/this+=" ${ac} "//g')"
+	fi
+	# Increment our counter for the number of simple commands executed
+	# in this prompt cycle
+	NUM_CALLS=$((NUM_CALLS + 1))
+	# Begin a timer
+	timer_start
+}
 # # Ensure this runs before every command.
 # trap 'preexec' DEBUG
-
-# function makestdouttty() {
-#   winpty --Xallow-non-tty "$1" "$_"
-# }
-
-# alias ttywin=

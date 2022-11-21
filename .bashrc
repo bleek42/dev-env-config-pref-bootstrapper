@@ -1,29 +1,35 @@
 #!/bin/bash
 
-# echo "$env"
+env=~/.ssh/agent.env
 
-# agent_load_env () {
-# 	test -f "$env" && . "$env" >| /dev/null
-# }
+agent_load_env() {
+	test -f "$env" && . "$env" >|/dev/null
+}
 
-# agent_start () {
-#     (umask 077; ssh-agent >| "$env")
-#     . "$env" >| /dev/null
-#  }
+agent_start() {
+	(
+		umask 077
+		ssh-agent >|"$env"
+	)
+	. "$env" >|/dev/null
+}
 
-# agent_load_env
+agent_load_env
 
-# # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
-# agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+agent_run_state=$(
+	ssh-add -l >|/dev/null 2>&1
+	echo $?
+)
 
-# if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-#     agent_start
-#     ssh-add
-# elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-#     ssh-add
-# fi
+if [ ! "$SSH_AUTH_SOCK" ] || [ "$agent_run_state" = 2 ]; then
+	agent_start
+	ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ "$agent_run_state" = 1 ]; then
+	ssh-add
+fi
 
-# unset env
+unset env
 
 case $- in
 *i*) ;;
@@ -60,3 +66,13 @@ HISTTIMEFORMAT='%a %Y-%m-%d %H:%M:%S'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/bash lesspipe)"
+
+# export NODE_PATH="$NODE_PATH"
+# export NODE_PATH="$SCOOP"/persist/nvm/nodejs/v16.17.0
+# "$NODE_PATH"
+# export NODE_EXE="$NODE_PATH"/node.exe
+if [[ -n "$NVM_SYMLINK" ]]; then
+	export NODE_PRESERVE_SYMLINKS=1
+	export NODE_PATH="$NVM_SYMLINK"
+	export NODE_EXE="$NODE_PATH"/node.exe
+fi

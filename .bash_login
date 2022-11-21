@@ -1,21 +1,10 @@
 #!/usr/bin/bash
 
 if command -v nvm >/dev/null 2>&1; then
-	export NODE_PRESERVE_SYMLINKS=1
-	export NODE_PATH="$NVM_SYMLINK"
-	export NODE_EXE="$NODE_PATH"/node
-
-	if [[ $WT_PROFILE_ID = "{7ea1a638-2230-4e4f-a668-5376c63537cc}" ]]; then
-		export NODE_PATH="$SCOOP"/persist/nvm/nodejs/v18.9.0
-		export NODE_EXE="$NODE_PATH"/node
-		eval "$(nvm use latest)"
-
-	elif [[ $WT_PROFILE_ID = "{171eae9f-9b88-4490-9fc0-01da8d227201}" ]]; then
-		export NODE_PATH="$SCOOP"/persist/nvm/nodejs/v16.17.0
-		export NODE_EXE="$NODE_PATH"/node
-		eval "$(nvm use lts)"
-	else
-		eval "$(nvm use lts)"
-
+		if [[ $WT_PROFILE_ID = "{7ea1a638-2230-4e4f-a668-5376c63537cc}" ]]; then
+			eval "$(nvm use latest)"
+		else
+			eval "$(nvm use lts)"
+		fi
 	fi
 fi

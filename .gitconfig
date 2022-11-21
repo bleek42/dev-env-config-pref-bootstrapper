@@ -1,0 +1,37 @@
+[core]
+	autocrlf = true
+	bare = false
+	filemode = false
+	symlinks = false
+	logallrefupdates = true
+	longPaths = true
+	editor = \"C:\\Users\\brand\\AppData\\Local\\Programs\\Microsoft VS Code Insiders\\bin\\code-insiders\" --wait
+	sshCommand = C:/Windows/System32/OpenSSH/ssh-agent.exe
+
+[init]
+	defaultBranchname = main
+
+[user "https://github.com/bleek42"]
+	name = bleek42
+	email = brandonleek42@gmail.com
+
+[credential]
+	helper = store
+
+[credential "helperselector"]
+	selected = manager-core
+
+[credential "https://miami.bootcampcontent.com"]
+	provider = generic
+
+[credential "https://github.com"]
+	helper = store
+	helper = C:/Users/brand/scoop/apps/gh/current/bin/gh.exe auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = store
+	helper = C:/Users/brand/scoop/apps/gh/current/bin/gh.exe auth git-credential
+
+[user]
+	name = bleek42
+	email = brandonleek42@gmail.com
