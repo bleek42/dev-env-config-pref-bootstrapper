@@ -1,10 +1,9 @@
 #!/usr/bin/bash
 
 if command -v nvm >/dev/null 2>&1; then
-		if [[ $WT_PROFILE_ID = "{7ea1a638-2230-4e4f-a668-5376c63537cc}" ]]; then
-			eval "$(nvm use latest)"
-		else
-			eval "$(nvm use lts)"
-		fi
+	if [[ $WT_PROFILE_ID = "{7ea1a638-2230-4e4f-a668-5376c63537cc}" ]]; then
+		eval "$(nvm use latest)"
+	else
+		eval "$(nvm use lts)"
 	fi
 fi
