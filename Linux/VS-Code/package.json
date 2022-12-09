@@ -1,0 +1,23 @@
+{
+  "name": "ide-config",
+  "version": "1.0.0",
+  "description": "Collection of bleek42's integrated development environment preferences: VSCode settings, extensions, global NPM packages, Prettier, ESLint, editorconfig files, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "vscode",
+    "config",
+    "settings",
+    "npm",
+    "global",
+    "packages",
+    "nodejs",
+    "environment",
+    "IDE",
+    "preferences"
+  ],
+  "author": "bleek42",
+  "license": "ISC"
+}
