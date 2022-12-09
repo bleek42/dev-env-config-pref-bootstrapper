@@ -1,1 +1,5 @@
+# directories
 .vscode/
+
+#files
+.git-*

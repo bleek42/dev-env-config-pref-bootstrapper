@@ -6,7 +6,7 @@ systemd=true
 appendWindowsPath=false
 
 [user]
-default=bleek
+default=
 
 # Automatically mount Windows drive when the distribution is launched
 [automount]
