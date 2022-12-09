@@ -1,15 +1,37 @@
 #!/usr/bin/bash
-# alias wintty='winpty $'
+
+# cd into usr home, sys root dir
+alias hm='cd ~'
+alias rt='cd /'
+
+# the '-' is for opt flags; not the actual cmd...
+alias codei='code-insiders'
+
+# much easier to type out that...
+alias winup='winget upgrade --all'
+alias scup='scoop update --all'
+alias printpath='echo $PATH | sed "s/:/\n/g" | sort | uniq -c'
+
 if command -v bat >/dev/null 2>&1; then
 	alias cat=bat
+fi
+
+if command -v pnpm >/dev/null 2>&1; then
+	alias npm='pnpm'
 fi
 
 # Show full paths of files in current directory
 alias paths='ls -d $PWD/*'
 
 if command -v exa >/dev/null 2>&1; then
-	echo "exa cmd exists in PATH"
+	echo "exa cmd exists in PATH: exa is the new ls"
 else
+
+	# --show-control-chars: help showing Korean or accented characters
+
+	alias ls='ls -F --color=auto --show-control-chars'
+	alias ll='ls -l'
+
 	# Show hidden files too
 	alias la='ls -A'
 	# Show file size, permissions, date, etc.
@@ -18,22 +40,24 @@ else
 	# Show only directories
 	alias l.='ls -d */'
 	# sort files by size, showing biggest at the bottom
-	alias sizesort="ls -alSr | tr -s ' ' | cut -d ' ' -f 5,9"
+	alias lsort="ls -alSr | tr -s ' ' | cut -d ' ' -f 5,9"
 
 	# typo correction
 	alias l='ls'
+	alias s='ls'
 	alias sl='ls'
-	alias l='ls'
 	# For fun: the ls ligature
 	alias ʪ='ls'
+fi
+
+if [[ -f "package.json" ]] && command -v ultra >/dev/null 2>&1; then
+	alias npm='ultra'
+	echo "local package.json file detected: using ultra for npm commands..."
 fi
 
 alias diff="colordiff"
 alias unicode=getunicodec
 alias ip=ipf
-alias s='ls'
-# # Custom colors for ls
-# LS_COLORS=$LS_COLORS:'di=0;95:ln=0;35:ex=0;93'
 
 # ═══════════════════════════════════════
 # FILE MANAGEMENT ALIASES
@@ -118,9 +142,19 @@ alias wget="wget -c"
 # ═══════════════════════════════════════
 # BOOKMARKING SYSTEM
 # ═══════════════════════════════════════
-#use to get current directory with spaces escaped
+# use to get current directory with spaces escaped
 alias qwd='printf "%q\n" "$(pwd)"'
-alias codei='code-insiders'
-alias winup='winget upgrade --all'
-alias scoopup='scoop update --all'
-alias printpath='echo $PATH | sed "s/:/\n/g" | sort | uniq -c'
+
+case "$TERM" in
+xterm*)
+	# The following programs are known to require a Win32 Console
+	# for interactive usage, therefore let's launch them through winpty
+	# when run inside `mintty`.
+	for name in node ipython php php5 psql python2.7; do
+		case "$(type -p "$name".exe 2>/dev/null)" in
+		'' | /usr/bin/*) continue ;;
+		esac
+		alias $name="winpty $name.exe"
+	done
+	;;
+esac
