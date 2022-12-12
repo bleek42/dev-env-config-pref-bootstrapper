@@ -1,0 +1,48 @@
+{
+	"name": "format-code-action",
+	"private": true,
+	"displayName": "Format Code Action",
+	"version": "0.1.0",
+	"publisher": "rohit-gohri",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rohit-gohri/vscode-format-code-action"
+	},
+	"bugs": {
+		"url": "https://github.com/rohit-gohri/vscode-format-code-action/issues"
+	},
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"icon": "icon.png",
+	"categories": [
+		"Other",
+		"Formatters"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.0",
+		"tslint": "^5.19.0",
+		"typescript": "^3.8.3",
+		"@types/vscode": "^1.32.0"
+	},
+	"__metadata": {
+		"id": "7f06f8a4-4c64-4470-8ad3-d82e51885270",
+		"publisherId": "f063ea4b-c423-46d6-a7d0-09174babe075",
+		"publisherDisplayName": "Rohit Gohri",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1651629244758
+	}
+}

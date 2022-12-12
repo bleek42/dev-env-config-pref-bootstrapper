@@ -1,0 +1,18 @@
+{
+	"parser": "babel",
+	"editorconfig": true,
+	"endOfLine": "lf",
+	"printWidth": 90,
+	"arrowParens": "always",
+	"singleQuote": true,
+	"jsxSingleQuote": false,
+	"semi": true,
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"singleAttributePerLine": false,
+	"quoteProps": "as-needed",
+	"trailingComma": "all",
+	"embeddedLanguageFormatting": "auto",
+	"plugins": [],
+	"pluginSearchDirs": []
+}

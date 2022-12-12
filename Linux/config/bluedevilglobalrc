@@ -1,0 +1,8 @@
+[Adapters]
+88:63:DF:CA:54:C0_powered=true
+
+[Devices]
+connectedDevices=
+
+[Global]
+bluetoothBlocked=true

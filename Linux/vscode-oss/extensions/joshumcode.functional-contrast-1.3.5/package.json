@@ -1,0 +1,58 @@
+{
+	"name": "functional-contrast",
+	"displayName": "functional contrast",
+	"description": "prettier theme for functional programming imo",
+	"version": "1.3.5",
+	"publisher": "joshumcode",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JoshTRN/functional-contrast"
+	},
+	"engines": {
+		"vscode": "^1.5.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"theme",
+		"dark theme",
+		"functional contrast",
+		"joshumcode"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Functional Contrast",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Functional Contrast-color-theme.json"
+			},
+			{
+				"label": "Functional Contrast Midnight",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Functional Contrast Midnight-color-theme.json"
+			},
+			{
+				"label": "Functional Contrast Forest Night",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Functional Contrast Forest Night-color-theme.json"
+			},
+			{
+				"label": "Functional Contrast Dark Ember",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Functional Contrast Dark Ember-color-theme.json"
+			}
+		]
+	},
+	"icon": "icon.png",
+	"__metadata": {
+		"id": "8300d082-6eea-454b-85a0-17a233f9dca1",
+		"publisherId": "69cf24ac-908b-4cf6-bcd8-110fb4613c16",
+		"publisherDisplayName": "joshumcode",
+		"targetPlatform": "undefined",
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1670535157072
+	}
+}

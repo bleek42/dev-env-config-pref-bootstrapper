@@ -1,0 +1,91 @@
+{
+	"name": "pretty-graphql",
+	"displayName": "Pretty GraphQL",
+	"description": "Awesome",
+	"version": "0.0.3",
+	"publisher": "sooxt",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sooxt98/PrettyGraphQL.git"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#1E1E1E",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:pretty-graphql.prettify"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pretty-graphql.prettify",
+				"title": "Prettify GraphQL"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Pretty GraphQL",
+			"properties": {
+				"pretty-graphql.first": {
+					"type": "integer",
+					"default": 15,
+					"description": "First column width"
+				},
+				"pretty-graphql.second": {
+					"type": "integer",
+					"default": 25,
+					"description": "Second column width"
+				},
+				"pretty-graphql.inputFirst": {
+					"type": "integer",
+					"default": 15,
+					"description": "First column width for input type"
+				},
+				"pretty-graphql.inputSecond": {
+					"type": "integer",
+					"default": 10,
+					"description": "Second column width for input type"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.49.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"eslint": "^7.6.0",
+		"@typescript-eslint/eslint-plugin": "^3.8.0",
+		"@typescript-eslint/parser": "^3.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	},
+	"__metadata": {
+		"id": "ea31c5dc-0584-44a0-93b6-dca30f5f068c",
+		"publisherId": "a2b2634e-349c-4969-b21f-e631cea9ec4c",
+		"publisherDisplayName": "SooXT",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1653627766862
+	}
+}

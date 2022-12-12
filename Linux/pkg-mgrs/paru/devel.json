@@ -1,0 +1,30 @@
+{
+  "archiso-git": [
+    {
+      "url": "https://gitlab.archlinux.org/archlinux/archiso.git",
+      "branch": null,
+      "commit": "dedfe0364cd665a12bb7a4d6fdb3b978d02026ab"
+    }
+  ],
+  "firewalld-git": [
+    {
+      "url": "https://github.com/firewalld/firewalld.git",
+      "branch": null,
+      "commit": "5291e241f436d34da2e774d7ad7a97e4db27de52"
+    }
+  ],
+  "mintstick-git": [
+    {
+      "url": "https://github.com/linuxmint/mintstick.git",
+      "branch": null,
+      "commit": "11340d162c8201fafcb15624229ba4850d3c28f5"
+    }
+  ],
+  "pgformatter-git": [
+    {
+      "url": "https://github.com/darold/pgformatter.git",
+      "branch": null,
+      "commit": "eaa0529a04d6ebdb75d67d35b8062dd4ca10516f"
+    }
+  ]
+}
