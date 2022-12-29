@@ -6,6 +6,7 @@ gtk-menu-images=1
 gtk-button-images=1
 gtk-cursor-theme-size=36
 gtk-cursor-theme-name="ArcAurora-cursors"
-gtk-icon-theme-name="Sweet-Teal"
-gtk-font-name="Hack Nerd Font Mono,  11"
+gtk-icon-theme-name="candy-icons"
+gtk-font-name="FiraCode Nerd Font, Demi Bold 11"
 
+gtk-modules=appmenu-gtk-module
